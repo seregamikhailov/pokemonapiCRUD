@@ -38,4 +38,9 @@ public class ReviewController {
         ReviewDto updatedReview = reviewService.updateReview(pokemonId,reviewId,reviewDto);
         return new ResponseEntity<>(updatedReview,HttpStatus.OK);
     }
+    @DeleteMapping("/pokemon/{pokemonId}/reviews/{id}")
+    public ResponseEntity<String> deleteReview(@PathVariable(value = "pokemonId")int pokemonId, @PathVariable(value = "id") int reviewId){
+        reviewService.deleteReview(pokemonId, reviewId);
+        return new ResponseEntity<>("Revoew deleted successfully", HttpStatus.OK);
+    }
 }
